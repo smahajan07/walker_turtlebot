@@ -17,7 +17,7 @@ class Walker {
     // create a object to publish velocities
     geometry_msgs::Twist msg;
     // create a node handle
-    ros::Nodehandle n;
+    ros::NodeHandle n;
     // create a subsciber for the laserscan topic
     ros::Subscriber sub;
     // create a publisher to publish velocities
