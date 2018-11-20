@@ -1,5 +1,5 @@
 #include <iostream>
-#include "walker.hpp"
+#include "walker_turtlebot/walker.hpp"
 
 Walker::Walker() {
   // initialize data members
@@ -10,7 +10,7 @@ Walker::Walker() {
   sub = n.subscribe <sensor_msgs::LaserScan> ("/scan", 1000,
     &Walker::laserCallback, this);
   // publish the velocity 
-  velPub = n.advertise <geometry_msgs::Twist> ("/mobile_base/commands/velocity", 100);
+  velPub = n.advertise <geometry_msgs::Twist> ("/mobile_base/commands/velocity", 1000);
   // initial msg
   msg.linear.x = 0.0;
   msg.linear.y = 0.0;
