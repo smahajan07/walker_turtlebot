@@ -40,8 +40,9 @@ Walker::Walker() {
   // subscribe to /scan topic call callback function
   sub = n.subscribe <sensor_msgs::LaserScan> ("/scan", 1000,
     &Walker::laserCallback, this);
-  // publish the velocity 
-  velPub = n.advertise <geometry_msgs::Twist> ("/mobile_base/commands/velocity", 1000);
+  // publish the velocity
+  velPub = n.advertise <geometry_msgs::Twist> ("/mobile_base/commands/velocity"
+    , 1000);
   // initial msg
   msg.linear.x = 0.0;
   msg.linear.y = 0.0;
@@ -57,10 +58,9 @@ void Walker::laserCallback(const sensor_msgs::LaserScan::ConstPtr& msg) {
   // set value for minimum distance from obstacle
   float min = 0.75;
   // check for collision
-  for(const auto& dist : msg->ranges) {
+  for (const auto& dist : msg->ranges) {
     if (dist < min) {
       collision = true;
-      
       return;
     }
   }
@@ -68,7 +68,6 @@ void Walker::laserCallback(const sensor_msgs::LaserScan::ConstPtr& msg) {
 }
 
 bool Walker::checkObstacle() {
-
   return collision;
 }
 
@@ -76,9 +75,9 @@ void Walker::moveRobot() {
   // set publisher frequency
   ros::Rate loop_rate(5);
   // move bot if ros is okay
-  while(ros::ok()) {
+  while (ros::ok()) {
     // check for obstacle
-    if(!checkObstacle()) {
+    if (!checkObstacle()) {
       ROS_INFO_STREAM("Moving forward ...");
       // make sure angular velocity is zero
       msg.angular.z = 0.0;
