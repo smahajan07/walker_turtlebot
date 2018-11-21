@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <launch>
-<!--   <arg name="record" default="false"/>
+  <arg name="record" default="false"/>
   <arg name="secs" default="30"/>
- -->
+
   <include file="$(find turtlebot_gazebo)/launch/turtlebot_world.launch">
   </include>
 
@@ -12,4 +12,10 @@
       type="walker"
       output="screen"
   />
+  <node
+        pkg="rosbag"
+        name="recorder_bag"
+        type="record" args="--all --output-name=$(find turtlebot_walker)/results/walker_turtlebot.bag -x /camera/(.*) --duration=$(arg secs)" if="$(arg record)"
+  />
+
 </launch>
