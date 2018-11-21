@@ -21,6 +21,14 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+/**
+ *@copyright Copyright (c) 2018 Sarthak Mahajan
+ *@file walker.cpp
+ *@author Sarthak Mahajan
+ *@brief Source file for Walker class, contains all function definitions
+ * 
+ */
+
 #include <iostream>
 #include "walker_turtlebot/walker.hpp"
 
@@ -46,7 +54,9 @@ Walker::Walker() {
 }
 
 void Walker::laserCallback(const sensor_msgs::LaserScan::ConstPtr& msg) {
+  // set value for minimum distance from obstacle
   float min = 0.75;
+  // check for collision
   for(const auto& dist : msg->ranges) {
     if (dist < min) {
       collision = true;

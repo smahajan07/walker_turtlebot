@@ -21,6 +21,14 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+/**
+ *@copyright Copyright (c) 2018 Sarthak Mahajan
+ *@file walker.hpp
+ *@author Sarthak Mahajan
+ *@brief Header file for Walker class, contains all member and function
+ * declarations.
+ */
+
 #ifndef INCLUDE_WALKER_HPP_
 #define INCLUDE_WALKER_HPP_
 
@@ -61,7 +69,8 @@ class Walker {
      */
     void laserCallback(const sensor_msgs::LaserScan::ConstPtr&);
     /**
-     * @brief checks for 
+     * @brief checks for the laser scan and whether the robot is close
+     *  to an obstacle or not
      * 
      * @return state of collision
      */

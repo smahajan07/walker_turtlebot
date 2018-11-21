@@ -21,11 +21,24 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+/**
+ *@copyright Copyright (c) 2018 Sarthak Mahajan
+ *@file main.cpp
+ *@author Sarthak Mahajan
+ *@brief Main program source file that creates and calls the walker class
+ * object and runs in obstacle avoidance mode
+ */
+
 #include "walker_turtlebot/walker.hpp"
 
 int main(int argc, char **argv) {
   // initialize ros node
   ros::init(argc, argv, "walker");
+  /**
+  * Create an object of the walker class and initiate the movement.
+  * The turtlebot keeps moving forward unless it is close to an obstacle,
+  * and in that case rotates in place and starts moving straight again. 
+  */
   // create walker object
   Walker walkerObj;
   // move the robot
