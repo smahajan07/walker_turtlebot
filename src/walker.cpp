@@ -72,6 +72,9 @@ bool Walker::checkObstacle() {
 }
 
 void Walker::moveRobot() {
+  // sleep for 4 seconds while gazebo starts
+  // Could be slow in VM
+  ros::Duration(4).sleep();
   // set publisher frequency
   ros::Rate loop_rate(5);
   // move bot if ros is okay
